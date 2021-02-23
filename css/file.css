@@ -83,8 +83,7 @@ html,body{
   display: block;
 }
 */
-.container #custom-btn{
-  margin: 30px;
+#custom-btn {
   display: block;
   width: 60%;
   height: 50px;
@@ -97,5 +96,8 @@ html,body{
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
-  background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+  background: #00c9db;
+  transition: 0.2s;
 }
+
+
