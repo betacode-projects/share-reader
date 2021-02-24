@@ -106,8 +106,10 @@
                             <h1><span>アップロード</span></h1>
                             <p class="p-large">どのファイルを送りますか？</p>
                             <button onclick="defaultBtnActive()" class="btn-solid-lg">ファイルを選択</button>
-                            <input id="default-btn" type="file" id="file" name="file" enctype="multipart/form-data" hidden>
-                            <p id="status"></p>
+                            <form id="upload" action="./sender.html">
+                                <input id="file" type="file" name="file" enctype="multipart/form-data" hidden>
+                            </form>
+                            <div id="status"></div>
                             <div class="progress"></div>
                         </div>
                     </div> <!-- end of col -->
@@ -213,6 +215,7 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="./js/jquery.cookie.js"></script>
     <script src="./lib/default.js"></script>
+    <script src="./lib/modules.js"></script>
     <script>
         const wrapper = document.querySelector(".wrapper");
         const fileName = document.querySelector(".file-name");
@@ -222,7 +225,7 @@
         const img = document.querySelector("img");
         let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
         function defaultBtnActive(){
-          defaultBtn.click();
+          file.click();
         }
       </script>
 </body>
