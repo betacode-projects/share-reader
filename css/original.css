@@ -10,6 +10,7 @@ ol {
     background: #f1f8ff31;
     border-left : solid 35px #5c9ee7;
     margin-bottom: 5px;
+    word-break : break-all;
   }
   ol li:before{
     /* 以下数字をつける */
@@ -36,8 +37,8 @@ ol {
     margin: 2em 0;
     background: #dcefff2d;
     padding: 10px;
-    min-height: 600px;
-    max-height: 800px;
+    min-height: 800px;
+    max-height: 1000px;
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius:10px;
@@ -85,6 +86,33 @@ ol {
     margin: 0;
 }
 
+.box31 {
+    margin: 0 auto;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius:10px;
+    margin-top:-1px;
+    border : solid 1px silver; 
+    display: flex;
+    width: 300px;
+    justify-content: center;
+}
+.box31 .box-title {
+    font-size: 1.2em;
+    background: transparent;
+    padding: 5px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    border-bottom: solid 1px silver; 
+}
+.box31 p {
+    padding: 15px 20px;
+    margin: 0;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -97,7 +125,7 @@ ol {
 
 /*スクロールバーの動く部分*/
 ::-webkit-scrollbar-thumb {
-  background-color: #5fb3f5;
+  background-color: #5c9ee7;
   border-radius: 10px;
 }
 
@@ -194,4 +222,94 @@ ol {
 
 .tab-switch {
 	display: none;
+}
+
+
+  table {
+    margin: 20px auto;
+    width: 100%;
+  }
+  .tbl-r02 th {
+    background: #5c9ee7;
+    border: solid 1px #ccc;
+    color: #fff;
+    padding: 10px;
+    width: 30%;
+  }
+  .tbl-r02 td {
+    border: solid 1px #ccc;
+    padding: 10px;
+    width: 70%;
+    word-break : break-all;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .last td:last-child {
+      border-bottom: solid 1px #ccc;
+      width: 100%;
+    }
+    .tbl-r02 {
+      width: 100%;
+    }
+    .tbl-r02 th,
+    .tbl-r02 td {
+      border-bottom: none;
+      display: block;
+      width: 100%;
+    }
+  }
+  
+  
+  .text-center{
+    margin-top: 140px;
+  }
+
+
+
+  ol li {
+    opacity: 0;
+    animation-name: fadein-bottom;
+    animation-duration: 1.0s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+ }
+ @keyframes fadein-bottom {
+    0% {
+       opacity: 0;
+       transform: translateY(20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+ }
+
+
+ .cp_iptxt {
+    margin-top: 20px;
+	position: relative;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: calc(100% - 20px);
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: rgb(224, 224, 224);
+	border: none;
+	border-bottom: 2px solid #e0e0e0;
+	background: transparent;
+    justify-content: center;
+    text-align: center;
+}
+.ef {
+    width: 100%;
+}
+.ef input[type='text']:focus {
+	border-bottom: 2px solid #5c9ee7;
+	outline: none;
 }

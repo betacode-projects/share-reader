@@ -110,28 +110,73 @@
                                 <div id="qr-scanner">
                                     <div style="width: 500px" id="reader"></div>
                                 </div>
+                                <div id="reader-data" style="text-align: center; margin-top: 20px; word-break: break-all;"></div>
                             </div>
                             <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">ダウンロード用QR</label>
                             <div class="tab-content">
-                                <div id="download-qr"></div>
+                                <div class="box31">
+                                    <div id="download-qr" style="margin: 0 auto;"></div>
+                                </div>
+                                <div class="cp_iptxt">
+                                    <label class="ef" style="margin: 0 auto;">
+                                        <input id="download-qr-link" type="text" readonly="readonly">
+                                    </label>
+                                    <button id="download-qr-link-btn" type="button" class="btn btn-success" data-toggle="tooltip" style="width: 100px;">コピー</button>
+                                </div>
                             </div>
-                            <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">権限移行用QR</label>
+                            <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">操作移行用QR</label>
                             <div class="tab-content">
-                                <div id="move-permission"></div>
+                                <div class="box31">
+                                    <div id="move-permission" style="margin: 0 auto;"></div>
+                                </div>
+                                <div class="cp_iptxt">
+                                    <label class="ef" style="margin: 0 auto;">
+                                        <input id="move-permission-link" type="text" readonly="readonly">
+                                    </label>
+                                    <button id="move-permission-link-btn" type="button" class="btn btn-success" data-toggle="tooltip" style="width: 100px;">コピー</button>
+                                </div>
                             </div>
                         </div>
                         <div class="box30">
                             <div class="box-title">アップロードファイル情報</div>
+                            <table class="tbl-r02">
+                              <tr>
+                                <th>ファイル名</th>
+                                <td id="file_name"></td>
+                              </tr>
+                              <tr>
+                                <th>ファイルサイズ</th>
+                                <td id="file_size"></td>
+                              </tr>
+                              <tr>
+                                <th>アップロード日時</th>
+                                <td id="upload_date"></td>
+                              </tr>
+                              <tr>
+                                <th>MIMEデータ</th>
+                                <td id="file_mime"></td>
+                              </tr>
+                              <tr>
+                                <th>ハッシュ値 (SHA256)</th>
+                                <td id="file_hash"></td>
+                              </tr>
+                              <tr>
+                                <th>ダウンロード数</th>
+                                <td id="file_download"></td>
+                              </tr>
+                              <tr class="last">
+                                <th>ファイル操作</th>
+                                <td style="text-align: center;">
+                                    <button id="clearFile" type="button" class="btn btn-danger">ファイルを削除</button>
+                                </td>
+                              </tr>
+                            </table>
                         </div>
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
                         <div class="box29">
-                            <div class="box-title">読み取りリスト</div>
-                            <ol class="tag_ul">
-                                <li>テスト1</li>
-                                <li>テスト1</li>
-                                <li>テスト1</li>
-                                <li>テスト1</li>
+                            <div class="box-title">ダウンロードリスト</div>
+                            <ol id="history">
                             </ol>
                         </div>
                     </div> <!-- end of col -->
@@ -251,6 +296,55 @@ $(window).on('load resize', function() {
     }
 });
 
+$('#download-qr-link').focus(function(){
+    $(this).select();
+});
+
+$('#move-permission-link').focus(function(){
+    $(this).select();
+});
+
+
+$('#download-qr-link-btn')
+// Tooltipの設定
+.tooltip({
+  title: 'リンクをコピーしました',
+  placement: 'bottom',
+  trigger: 'manual'
+})
+// Tooltip表示後の動作を設定
+.on('shown.bs.tooltip', function(){
+  setTimeout((function(){
+    $(this).tooltip('hide');
+  }).bind(this), 2000);
+})
+// クリック時の動作を設定
+.on('click', function() {
+  $(this).tooltip('show'); // Tooltipを表示する
+  $('#download-qr-link').select();
+  document.execCommand('copy');
+});
+
+
+$('#move-permission-link-btn')
+// Tooltipの設定
+.tooltip({
+  title: 'リンクをコピーしました',
+  placement: 'bottom',
+  trigger: 'manual'
+})
+// Tooltip表示後の動作を設定
+.on('shown.bs.tooltip', function(){
+  setTimeout((function(){
+    $(this).tooltip('hide');
+  }).bind(this), 2000);
+})
+// クリック時の動作を設定
+.on('click', function() {
+  $(this).tooltip('show'); // Tooltipを表示する
+  $('#move-permission-link').select();
+  document.execCommand('copy');
+});
 
 </script>
 <script src="./lib/sender.js"></script>
