@@ -4,22 +4,24 @@
    Description: Custom JS file
 */
 
+function hidePreloader() {
+    var preloader = $('.spinner-wrapper');
+    setTimeout(function() {
+        preloader.fadeOut(500);
+    }, 500);
+}
 
 (function($) {
     "use strict"; 
-	
+
 	/* Preloader */
+    /*
 	$(window).on('load', function() {
 		var preloaderFadeOutTime = 500;
-		function hidePreloader() {
-			var preloader = $('.spinner-wrapper');
-			setTimeout(function() {
-				preloader.fadeOut(preloaderFadeOutTime);
-			}, 500);
-		}
+
 		hidePreloader();
 	});
-
+    */
 	
 	/* Navbar Scripts */
 	// jQuery to collapse the navbar on scroll

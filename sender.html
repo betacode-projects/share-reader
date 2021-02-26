@@ -101,7 +101,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div style="margin-bottom: 50px;"><h1 style="text-align: center;">ファイル共有パネル</h1></div>
+                        <div style="margin-bottom: 50px;"><h1 style="text-align: center;">ファイル共有 パネル</h1></div>
                     </div>
                     <div class="col-lg-6">
                         <div class="tab-wrap">
@@ -137,47 +137,87 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box30">
-                            <div class="box-title">アップロードファイル情報</div>
-                            <table class="tbl-r02">
-                              <tr>
-                                <th>ファイル名</th>
-                                <td id="file_name"></td>
-                              </tr>
-                              <tr>
-                                <th>ファイルサイズ</th>
-                                <td id="file_size"></td>
-                              </tr>
-                              <tr>
-                                <th>アップロード日時</th>
-                                <td id="upload_date"></td>
-                              </tr>
-                              <tr>
-                                <th>MIMEデータ</th>
-                                <td id="file_mime"></td>
-                              </tr>
-                              <tr>
-                                <th>ハッシュ値 (SHA256)</th>
-                                <td id="file_hash"></td>
-                              </tr>
-                              <tr>
-                                <th>ダウンロード数</th>
-                                <td id="file_download"></td>
-                              </tr>
-                              <tr class="last">
-                                <th>ファイル操作</th>
-                                <td style="text-align: center;">
-                                    <button id="clearFile" type="button" class="btn btn-danger">ファイルを削除</button>
-                                </td>
-                              </tr>
-                            </table>
+
+
+                        <div class="tab-wrap">
+                            <input id="TAB-04" type="radio" name="TAB1" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-04">ファイル情報</label>
+                            <div class="tab-content">
+                                <table class="tbl-r02">
+                                    <tr>
+                                      <th>ファイル名</th>
+                                      <td id="file_name"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>ファイルサイズ</th>
+                                      <td id="file_size"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>アップロード日時</th>
+                                      <td id="upload_date"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>MIMEデータ</th>
+                                      <td id="file_mime"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>ハッシュ値 (SHA256)</th>
+                                      <td id="file_hash"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>ダウンロード数</th>
+                                      <td id="file_download"></td>
+                                    </tr>
+                                    <tr class="last">
+                                      <th>ファイル操作</th>
+                                      <td style="text-align: center;">
+                                          <button id="clearFile" type="button" class="btn btn-danger">ファイルを削除</button>
+                                      </td>
+                                    </tr>
+                                  </table>
+                            </div>
+                            <input id="TAB-05" type="radio" name="TAB1" class="tab-switch" /><label class="tab-label" for="TAB-05">端末統計</label>
+                            <div class="tab-content">
+                                <div class="box31">
+                                    <div id="download-qr" style="margin: 0 auto;"></div>
+                                </div>
+                                <div class="cp_iptxt">
+                                    <label class="ef" style="margin: 0 auto;">
+                                        <input id="download-qr-link" type="text" readonly="readonly">
+                                    </label>
+                                    <button id="download-qr-link-btn" type="button" class="btn btn-success" data-toggle="tooltip" style="width: 100px;">コピー</button>
+                                </div>
+                            </div>
+                            <input id="TAB-06" type="radio" name="TAB1" class="tab-switch" /><label class="tab-label" for="TAB-06">ダウンロード推移</label>
+                            <div class="tab-content">
+                                <div class="box31">
+                                    <div id="move-permission" style="margin: 0 auto;"></div>
+                                </div>
+                                <div class="cp_iptxt">
+                                    <label class="ef" style="margin: 0 auto;">
+                                        <input id="move-permission-link" type="text" readonly="readonly">
+                                    </label>
+                                    <button id="move-permission-link-btn" type="button" class="btn btn-success" data-toggle="tooltip" style="width: 100px;">コピー</button>
+                                </div>
+                            </div>
                         </div>
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
-                        <div class="box29">
-                            <div class="box-title">ダウンロードリスト</div>
-                            <ol id="history">
-                            </ol>
+                        <div class="tab-wrap">
+                            <input id="TAB-07" type="radio" name="TAB2" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-07">すべてのログ</label>
+                            <div class="tab-content">
+                                <ol id="history-all">
+                                </ol>
+                            </div>
+                            <input id="TAB-08" type="radio" name="TAB2" class="tab-switch" /><label class="tab-label" for="TAB-08">ダウンロードログ</label>
+                            <div class="tab-content">
+                                <ol id="history-download">
+                                </ol>
+                            </div>
+                            <input id="TAB-09" type="radio" name="TAB2" class="tab-switch" /><label class="tab-label" for="TAB-09">QRスキャンログ</label>
+                            <div class="tab-content">
+                                <ol id="history-reader">
+                                </ol>
+                            </div>
                         </div>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
