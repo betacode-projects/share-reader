@@ -18,7 +18,7 @@
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Share Reader</title>
+    <title>Share Reader - ダウンロード</title>
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
@@ -28,6 +28,7 @@
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+    <link href="css/original.css" rel="stylesheet">
 	
 	<!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
@@ -51,7 +52,7 @@
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Leno</a> -->
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="index.html"> </a> 
+        <a class="navbar-brand logo-image" style="text-decoration: none;" href="index.html"><img style="width: auto; height: 35px" src="images/logo.png"> Share Reader</a> 
         
         <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +67,7 @@
                     <a class="nav-link page-scroll" href="index.html">ホーム</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="upload_file.html">アップロード</a>
+                    <a class="nav-link page-scroll" href="upload.html">アップロード</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#header">ダウンロード<span class="sr-only">(current)</span></a>
@@ -99,23 +100,71 @@
         <div class="header-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
+                        <div><h1 style="text-align: center;">ファイルをダウンロード</h1></div>
+                    </div>
+                    <div class="col-lg-6" id="info">
                         <div class="text-container">
-                            <h1><span id="js-rotating"> DOWNROAD</span></h1>
-                            <h2>あなたのQRコードはこちら</h2>
+                            <div class="image-container">
+                                <img class="img-fluid" src="images/file-icon.svg" style="width: 350px;" alt="alternative">
+                            </div> <!-- end of image-container -->
+                            <div class="button-flex">
+                                <a class="btn-solid-lg page-scroll" id="download-btn" href="#info" onclick="onDownloadClick();"><i class="fas fa-download"></i><span id="download-msg">　ダウンロード</span></a>
+                                <a class="btn-solid-lg-red page-scroll" id="remove-btn" href="#info" onclick="onRemoveClick();"><i class="fas fa-trash"></i><span id="remove-msg">　キャンセル</span></a>
+                            </div>
                         </div>
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
-                        <div class="image-container">
-                            <img class="img-fluid" src="images/qrcode_scan_icon_136286.png" alt="alternative">
-                        </div> <!-- end of image-container -->
+                        <div class="text-container">
+                            <div class="box30">
+                                <div class="box-title">ファイル情報</div>
+                                <table class="tbl-r02">
+                                    <tr>
+                                      <th>ファイル名</th>
+                                      <td id="file_name"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>ファイルサイズ</th>
+                                      <td id="file_size"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>アップロード日時</th>
+                                      <td id="upload_date"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>MIMEデータ</th>
+                                      <td id="file_mime"></td>
+                                    </tr>
+                                    <tr>
+                                      <th>ハッシュ値 (SHA256)</th>
+                                      <td id="file_hash"></td>
+                                    </tr>
+                                    <tr class="last">
+                                      <th>ダウンロード数</th>
+                                      <td id="file_download"></td>
+                                    </tr>
+                                  </table>
+                            </div>
+                        </div>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of header-content -->
     </header> <!-- end of header -->
     <!-- end of header -->
-
+    <!-- Breadcrumbs -->
+    <div class="ex-basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs">
+                        <a href="index.html">ホーム</a><i class="fa fa-angle-double-right"></i><span>ダウンロード待ち受け</span><i class="fa fa-angle-double-right"></i><span>ファイルをダウンロード</span>
+                    </div> <!-- end of breadcrumbs -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of breadcrumbs -->
     <!-- Footer -->
     <div class="footer">
         <div class="container">
@@ -132,11 +181,7 @@
                         <ul class="list-unstyled li-space-lg">
                             <li class="media">
                                 <i class="fas fa-square"></i>
-                                <div class="media-body">Our business partners <a class="turquoise" href="#your-link">startupguide.com</a></div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Read our <a class="turquoise" href="terms-conditions.html">Terms & Conditions</a>, <a class="turquoise" href="privacy-policy.html">Privacy Policy</a></div>
+                                <div class="media-body">使い方は<a class="turquoise" href="./how_to_use.html">こちら</a></div>
                             </li>
                         </ul>
                     </div>
@@ -187,7 +232,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © share reader</p>
+                    <p class="p-small">Copyright © Share Reader</p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
@@ -205,5 +250,9 @@
     <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="./js/jquery.cookie.js"></script>
+    <script src="./lib/default.js"></script>
+    <script src="./lib/modules.js"></script>
+    <script src="./lib/download.js"></script>
 </body>
 </html>

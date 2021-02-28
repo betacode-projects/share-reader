@@ -18,11 +18,9 @@
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Share Reader - アップロード</title>
+    <title>Share Reader - 受信者ページ</title>
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/file.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -30,6 +28,7 @@
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+    <link href="css/original.css" rel="stylesheet">
 	
 	<!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
@@ -65,13 +64,13 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="index.html">ホーム </a>
+                    <a class="nav-link page-scroll" href="index.html">ホーム</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#header">アップロード <span class="sr-only">(current)</span></a>
+                    <a class="nav-link page-scroll" href="upload.html">アップロード</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="receiver.html">ダウンロード</a>
+                    <a class="nav-link page-scroll" href="#header">ダウンロード<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="how_to_use.html">使い方</a>
@@ -101,23 +100,33 @@
         <div class="header-content">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-12">
+                        <div style="margin-bottom: 50px;">
+                            <h1 style="text-align: center;">ファイルをダウンロード</h1>
+                            <p class="p-large" style="text-align: center;">「受信者用QRコード」を送信者がスキャンして、ファイルをダウンロードします。</p>
+                        </div>
+                    </div>
                     <div class="col-lg-6">
-                        <div class="text-container">
-                            <h1><span>アップロード</span></h1>
-                            <div id="status" style="margin-top: 20px;">どのファイルを送りますか？</div>
-                            <div class="progress" style="margin-bottom: 40px;"></div>
-                            <button onclick="defaultBtnActive()" class="btn-solid-lg"><i class="far fa-file"></i>　ファイルを選択</button>
-                            <form id="upload" action="./sender.html">
-                                <input id="file" type="file" name="file" enctype="multipart/form-data" hidden>
-                            </form>
-                            <div id="error" class="alert alert-danger" role="alert" style="margin-top: 10px; background-color: rgba(255, 72, 72, 0.24); color: rgb(255, 180, 180); text-align: center; display: none;"></div>
+                        <div class="box30">
+                            <div class="box-title">受信用QRコード</div>
+                            <div style="display: flex; justify-content: center;">
+                                <div class="box31">
+                                    <div id="qrcode" style="margin: 0 auto;"></div>
+                                </div>
+                            </div>
+                            <div class="cp_iptxt">
+                                <label class="ef" style="margin: 0 auto;">
+                                    <input id="download-qr-token" type="text" readonly="readonly">
+                                </label>
+                                <button id="download-qr-link-btn" type="button" class="btn btn-success" data-toggle="tooltip" style="width: 100px;">コピー</button>
+                            </div>
                         </div>
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
-                        <div class="image-container">
-                            <img class="img-fluid" src="images/upload.svg" style="width: 350px;" alt="alternative">
+                        <div class="image-container" style="margin-top: 20px; margin-bottom: 20px;">
+                            <img class="img-fluid" src="images/qr-code.svg" style="width: 350px;" alt="alternative">
                         </div> <!-- end of image-container -->
-                    </div> <!-- end of col -->
+                    </div>
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of header-content -->
@@ -129,7 +138,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumbs">
-                        <a href="index.html">ホーム</a><i class="fa fa-angle-double-right"></i><span>ファイルをアップロード</span>
+                        <a href="index.html">ホーム</a><i class="fa fa-angle-double-right"></i><span>ダウンロード待ち受け</span>
                     </div> <!-- end of breadcrumbs -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -222,36 +231,34 @@
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="./js/jquery.cookie.js"></script>
+    <script src="./js/jquery.qrcode.min.js"></script>
     <script src="./lib/default.js"></script>
     <script src="./lib/modules.js"></script>
-    <script>
-        const wrapper = document.querySelector(".wrapper");
-        const fileName = document.querySelector(".file-name");
-        const defaultBtn = document.querySelector("#default-btn");
-        const customBtn = document.querySelector("#custom-btn");
-        const cancelBtn = document.querySelector("#cancel-btn i");
-        const img = document.querySelector("img");
-        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
-        function defaultBtnActive(){
-          file.click();
-        }
-      </script>
+    <script src="./lib/receiver.js"></script>
 </body>
 </html>
+<script>
+$('#download-qr-token').focus(function(){
+    $(this).select();
+});
 
-<script src="./lib/upload.js"></script>
-<style>
-.progress {
-    display: block;
-    text-align: center;
-    width: 0;
-    height: 3px;
-    background: #00c9db;
-	transition: width .3s;
-	margin-bottom: 35px;
-}
-.progress.hide {
-    opacity: 0;
-    transition: opacity 1.3s;
-}
-</style>
+$('#download-qr-link-btn')
+// Tooltipの設定
+.tooltip({
+  title: 'リンクをコピーしました',
+  placement: 'bottom',
+  trigger: 'manual'
+})
+// Tooltip表示後の動作を設定
+.on('shown.bs.tooltip', function(){
+  setTimeout((function(){
+    $(this).tooltip('hide');
+  }).bind(this), 2000);
+})
+// クリック時の動作を設定
+.on('click', function() {
+  $(this).tooltip('show'); // Tooltipを表示する
+  $('#download-qr-token').select();
+  document.execCommand('copy');
+});
+</script>
